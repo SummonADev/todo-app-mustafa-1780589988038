@@ -1,4 +1,4 @@
-import type { TodoCategory } from '@/types/todo';
+import type { TodoCategory } from '../types/todo';
 
 export const categoryConfig: Record<TodoCategory, { label: string; color: string; bg: string }> = {
   personal: { label: 'Personal', color: 'text-blue-600', bg: 'bg-blue-100' },

@@ -1,5 +1,5 @@
-import type { Todo } from '@/types/todo';
-import TodoItem from '@/components/TodoItem';
+import type { Todo } from '../types/todo';
+import TodoItem from './TodoItem';
 import { ClipboardList } from 'lucide-react';
 
 interface TodoListProps {

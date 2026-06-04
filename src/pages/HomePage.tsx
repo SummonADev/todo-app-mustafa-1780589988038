@@ -1,8 +1,8 @@
-import AddTodoForm from '@/components/AddTodoForm';
-import FilterBar from '@/components/FilterBar';
-import StatsBar from '@/components/StatsBar';
-import TodoList from '@/components/TodoList';
-import { useTodos } from '@/hooks/useTodos';
+import AddTodoForm from '../components/AddTodoForm';
+import FilterBar from '../components/FilterBar';
+import StatsBar from '../components/StatsBar';
+import TodoList from '../components/TodoList';
+import { useTodos } from '../hooks/useTodos';
 
 export default function HomePage() {
   const {
@@ -23,7 +23,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-100 flex items-start justify-center pt-10 pb-10 px-4">
       <div className="w-full max-w-lg">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-extrabold text-indigo-700 tracking-tight">✅ My Todos</h1>
+          <h1 className="text-4xl font-extrabold text-indigo-700 tracking-tight">
+            ✅ My Todos
+          </h1>
           <p className="text-sm text-gray-500 mt-1">Stay organised, get things done.</p>
         </div>
 

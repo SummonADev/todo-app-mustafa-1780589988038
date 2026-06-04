@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
-import type { TodoCategory } from '@/types/todo';
-import { categoryOptions, categoryConfig } from '@/lib/categories';
+import type { TodoCategory } from '../types/todo';
+import { categoryOptions, categoryConfig } from '../lib/categories';
 
 interface AddTodoFormProps {
   onAdd: (text: string, category: TodoCategory) => void;

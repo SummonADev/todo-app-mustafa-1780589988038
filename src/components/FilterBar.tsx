@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import type { FilterType } from '@/types/todo';
+import type { FilterType } from '../types/todo';
 
 interface FilterBarProps {
   filter: FilterType;

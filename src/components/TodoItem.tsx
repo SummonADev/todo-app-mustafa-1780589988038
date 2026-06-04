@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, Trash2, Pencil, X, Save } from 'lucide-react';
-import type { Todo } from '@/types/todo';
-import { categoryConfig } from '@/lib/categories';
+import type { Todo } from '../types/todo';
+import { categoryConfig } from '../lib/categories';
 
 interface TodoItemProps {
   todo: Todo;
