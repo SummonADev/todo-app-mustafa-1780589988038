@@ -35,7 +35,7 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
 
   return (
     <div
-      className={`group flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all ${
+      className={`group flex items-center gap-3 p-4 rounded-xl bg-card border border-line shadow-sm hover:shadow-md transition-all ${
         todo.completed ? 'opacity-60' : ''
       }`}
     >
@@ -44,11 +44,11 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
         onClick={() => onToggle(todo.id)}
         className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
           todo.completed
-            ? 'bg-indigo-600 border-indigo-600'
-            : 'border-gray-300 hover:border-indigo-400'
+            ? 'bg-acc border-acc'
+            : 'border-ink-3 hover:border-acc'
         }`}
       >
-        {todo.completed && <Check size={14} className="text-white" />}
+        {todo.completed && <Check size={14} className="text-acc-ink" />}
       </button>
 
       {/* Content */}
@@ -60,13 +60,13 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
             onChange={(e) => setEditText(e.target.value)}
             onKeyDown={handleKeyDown}
             autoFocus
-            className="w-full px-2 py-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900"
+            className="w-full px-2 py-1 rounded-lg border border-line bg-card text-ink focus:outline-none focus:ring-2 focus:ring-acc"
           />
         ) : (
           <div>
             <p
               className={`text-sm sm:text-base ${
-                todo.completed ? 'line-through text-gray-400' : 'text-gray-800'
+                todo.completed ? 'line-through text-ink-3' : 'text-ink'
               }`}
             >
               {todo.text}
@@ -77,7 +77,7 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
               >
                 {config.label}
               </span>
-              <span className="text-[10px] text-gray-400">
+              <span className="text-[10px] text-ink-3">
                 {new Date(todo.createdAt).toLocaleDateString()}
               </span>
             </div>
@@ -91,13 +91,13 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
           <>
             <button
               onClick={handleSave}
-              className="p-1.5 rounded-lg text-green-600 hover:bg-green-50 transition-colors"
+              className="p-1.5 rounded-lg text-green-600 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-400/10 transition-colors"
             >
               <Save size={16} />
             </button>
             <button
               onClick={handleCancel}
-              className="p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 transition-colors"
+              className="p-1.5 rounded-lg text-ink-3 hover:bg-subtle transition-colors"
             >
               <X size={16} />
             </button>
@@ -106,13 +106,13 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
           <>
             <button
               onClick={() => setIsEditing(true)}
-              className="p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-indigo-600 transition-colors"
+              className="p-1.5 rounded-lg text-ink-3 hover:bg-subtle hover:text-acc transition-colors"
             >
               <Pencil size={16} />
             </button>
             <button
               onClick={() => onDelete(todo.id)}
-              className="p-1.5 rounded-lg text-gray-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+              className="p-1.5 rounded-lg text-ink-3 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-400/10 dark:hover:text-red-400 transition-colors"
             >
               <Trash2 size={16} />
             </button>

@@ -1,13 +1,202 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-*, *::before, *::after {
+/* ---- Theme tokens -------------------------------------------------------
+   Every theme preset sets the same CSS custom properties on <html> (via
+   data-theme). The @theme inline block below maps them to Tailwind color
+   utilities (bg-page, bg-card, text-ink, bg-acc, ...), so every component
+   restyles itself when the attribute changes. :root doubles as the Light
+   theme and as the fallback when no/unknown data-theme is set.
+------------------------------------------------------------------------- */
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --page: #f3f4f6;
+  --card: #ffffff;
+  --subtle: #f3f4f6;
+  --line: #e5e7eb;
+  --ink: #111827;
+  --ink-2: #6b7280;
+  --ink-3: #9ca3af;
+  --acc: #4f46e5;
+  --acc-hover: #4338ca;
+  --acc-ink: #ffffff;
+  --acc-soft: #eef2ff;
+  --acc-soft-ink: #4338ca;
+  --stat-from: #6366f1;
+  --stat-to: #9333ea;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0f172a;
+  --card: #1e293b;
+  --subtle: #334155;
+  --line: #334155;
+  --ink: #f1f5f9;
+  --ink-2: #94a3b8;
+  --ink-3: #64748b;
+  --acc: #6366f1;
+  --acc-hover: #818cf8;
+  --acc-ink: #ffffff;
+  --acc-soft: rgb(99 102 241 / 0.15);
+  --acc-soft-ink: #a5b4fc;
+  --stat-from: #6366f1;
+  --stat-to: #a855f7;
+}
+
+[data-theme='ocean-light'] {
+  color-scheme: light;
+  --page: #eef6fb;
+  --card: #ffffff;
+  --subtle: #e0f2fe;
+  --line: #cce7f5;
+  --ink: #0f2f42;
+  --ink-2: #527389;
+  --ink-3: #8aa7ba;
+  --acc: #0284c7;
+  --acc-hover: #0369a1;
+  --acc-ink: #ffffff;
+  --acc-soft: #e0f2fe;
+  --acc-soft-ink: #0369a1;
+  --stat-from: #0ea5e9;
+  --stat-to: #2563eb;
+}
+
+[data-theme='ocean-dark'] {
+  color-scheme: dark;
+  --page: #06283e;
+  --card: #0a3753;
+  --subtle: #0f4a6d;
+  --line: #155279;
+  --ink: #e3f2fb;
+  --ink-2: #9ccbe4;
+  --ink-3: #639bb9;
+  --acc: #38bdf8;
+  --acc-hover: #7dd3fc;
+  --acc-ink: #06283e;
+  --acc-soft: rgb(56 189 248 / 0.15);
+  --acc-soft-ink: #7dd3fc;
+  --stat-from: #0ea5e9;
+  --stat-to: #38bdf8;
+}
+
+[data-theme='forest-light'] {
+  color-scheme: light;
+  --page: #f0faf2;
+  --card: #ffffff;
+  --subtle: #dcf5e3;
+  --line: #c4ebd1;
+  --ink: #14291b;
+  --ink-2: #4f6b58;
+  --ink-3: #8aa694;
+  --acc: #16a34a;
+  --acc-hover: #15803d;
+  --acc-ink: #ffffff;
+  --acc-soft: #dcfce7;
+  --acc-soft-ink: #15803d;
+  --stat-from: #22c55e;
+  --stat-to: #0d9488;
+}
+
+[data-theme='forest-dark'] {
+  color-scheme: dark;
+  --page: #041f10;
+  --card: #0a301b;
+  --subtle: #114427;
+  --line: #1a5233;
+  --ink: #dcf5e3;
+  --ink-2: #9fd3b0;
+  --ink-3: #63a67d;
+  --acc: #4ade80;
+  --acc-hover: #86efac;
+  --acc-ink: #052e16;
+  --acc-soft: rgb(74 222 128 / 0.14);
+  --acc-soft-ink: #86efac;
+  --stat-from: #22c55e;
+  --stat-to: #2dd4bf;
+}
+
+[data-theme='sunset-light'] {
+  color-scheme: light;
+  --page: #fdf6ef;
+  --card: #ffffff;
+  --subtle: #fcebdd;
+  --line: #f6dcc4;
+  --ink: #301b0e;
+  --ink-2: #71543d;
+  --ink-3: #ad8b6f;
+  --acc: #ea580c;
+  --acc-hover: #c2410c;
+  --acc-ink: #ffffff;
+  --acc-soft: #ffedd5;
+  --acc-soft-ink: #c2410c;
+  --stat-from: #f97316;
+  --stat-to: #e11d48;
+}
+
+[data-theme='sunset-dark'] {
+  color-scheme: dark;
+  --page: #1d1109;
+  --card: #2b1a0e;
+  --subtle: #3d2513;
+  --line: #4d3018;
+  --ink: #fbeadd;
+  --ink-2: #d6ad8b;
+  --ink-3: #a37c58;
+  --acc: #fb923c;
+  --acc-hover: #fdba74;
+  --acc-ink: #2b1303;
+  --acc-soft: rgb(251 146 60 / 0.14);
+  --acc-soft-ink: #fdba74;
+  --stat-from: #f97316;
+  --stat-to: #fb7185;
+}
+
+/* Maps the runtime tokens to Tailwind color utilities. `inline` keeps the
+   var() references so utilities follow whatever theme is active. */
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-acc: var(--acc);
+  --color-acc-hover: var(--acc-hover);
+  --color-acc-ink: var(--acc-ink);
+  --color-acc-soft: var(--acc-soft);
+  --color-acc-soft-ink: var(--acc-soft-ink);
+  --color-stat-from: var(--stat-from);
+  --color-stat-to: var(--stat-to);
+}
+
+/* dark: variant keyed off data-theme (attribute strategy) — used for
+   hue-fixed colors like category badges and danger/success actions. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *, [data-theme$='-dark'], [data-theme$='-dark'] *));
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+/* Subtle cross-fade when the theme changes. Class-level transition-*
+   utilities beat this (higher specificity), so existing animations are
+   untouched. */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, text-decoration-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #f3f4f6;
-  color: #111827;
+  background-color: var(--page);
+  color: var(--ink);
 }

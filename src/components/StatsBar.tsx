@@ -6,7 +6,7 @@ export default function StatsBar({ stats }: StatsBarProps) {
   const percentage = stats.total > 0 ? Math.round((stats.completed / stats.total) * 100) : 0;
 
   return (
-    <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg">
+    <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-stat-from to-stat-to text-white shadow-lg">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-medium opacity-90">Progress</span>
         <span className="text-2xl font-bold">{percentage}%</span>

@@ -29,12 +29,12 @@ export default function AddTodoForm({ onAdd }: AddTodoFormProps) {
           onChange={(e) => setText(e.target.value)}
           onFocus={() => setIsExpanded(true)}
           placeholder="What needs to be done?"
-          className="flex-1 px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow shadow-sm"
+          className="flex-1 px-4 py-3 rounded-xl border border-line bg-card text-ink placeholder-ink-3 focus:outline-none focus:ring-2 focus:ring-acc focus:border-transparent transition-shadow shadow-sm"
         />
         <button
           type="submit"
           disabled={!text.trim()}
-          className="px-4 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm flex items-center gap-1.5 font-medium"
+          className="px-4 py-3 bg-acc text-acc-ink rounded-xl hover:bg-acc-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm flex items-center gap-1.5 font-medium"
         >
           <Plus size={18} />
           <span className="hidden sm:inline">Add</span>
@@ -49,8 +49,8 @@ export default function AddTodoForm({ onAdd }: AddTodoFormProps) {
               onClick={() => setCategory(cat)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 category === cat
-                  ? `${categoryConfig[cat].bg} ${categoryConfig[cat].color} ring-2 ring-offset-1 ring-indigo-400`
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                  ? `${categoryConfig[cat].bg} ${categoryConfig[cat].color} ring-2 ring-offset-1 ring-acc ring-offset-card`
+                  : 'bg-subtle text-ink-2 hover:bg-line'
               }`}
             >
               {categoryConfig[cat].label}
